@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUP</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="{% static 'bootStrap/css/bootstrap.css' %}" rel="stylesheet" id="bootstrap-css">
+    <script src="{% static 'bootStrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootStrap/jquery-3.5.1.min.js' %}"></script>
+</head>
+<body>
+     <!------ Include the above in your HEAD tag ---------->
+    
+    <div class="wrapper fadeInDown">
+
+        <div id="formContent">
+
+          <!-- Tabs Titles -->
+          <!-- Icon -->
+          <div class="fadeIn first">
+           <h1 class="login mt-3 mb-3">Sign Up</h1>
+          </div>
+      
+          <!-- Login Form -->
+          <form action="{% url 'signup' %}" method="POST">
+          {% csrf_token %}
+            {% comment %} <input type="text" id="name" class="fadeIn second" name="Name" placeholder="FirstName">
+            <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email"> {% endcomment %}
+            {% comment %} <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">  {% endcomment %}
+      <div class=" {% if content.username.errors %}error{% endif %}">
+            {{content.username}}
+            {{content.username.errors}}
+            </div>
+
+            <div class=" {% if content.email.errors %}error{% endif %}">
+            {{content.email}}
+            {{content.email.errors}}
+            </div>
+
+
+            <div class=" {% if content.password1.errors %}error{% endif %}">
+            {{content.password1}}
+            {{content.password1.errors}}
+            </div>
+
+
+
+            <div class=" {% if content.password2.errors %}error{% endif %}">
+            {{content.password2}}
+            {{content.password2.errors}}
+            </div>
+            <br>
+            <input type="submit" class="fadeIn fourth text-dark bg-warning" value="Sign Up">
+          </form>
+      
+         
+      
+        </div>
+      </div>
+</body>
+</html>
